@@ -2828,8 +2828,8 @@ Size to fit in an upper corner, around 250 x 60. Set color dark and alpha transp
 </font></ol><font face=arial><em><b>NOTE: </b></em>When the first TextMeshPro object is added, Text or Button, the import window appears. Click the upper button [Import TMP Essentials], but not the lower one. In tem project, it is impprtant that only one person imprt TMP, and then quickly push, to avoid GiHub conflits.
 <br />
 
-<a href="gamedesign/Unity2d/TextMeshPro_Import.png" target=new>
-<img src="gamedesign/Unity2d/TextMeshPro_Import.png" style="width:70%; height:auto;"></a>
+<a href="gamedesign/Unity2D/TextMeshPro_Import.png" target=new>
+<img src="gamedesign/Unity2D/TextMeshPro_Import.png" style="width:70%; height:auto;"></a>
 
 
   <br><br>
@@ -7151,27 +7151,33 @@ Click <a href="gamedesign/Unity2D/InventoryImages.zip">here</a> to download  a z
 <a href="#02a"><img src="gamedesign/triangle_purple.png" alt=""></a> <a name="02a5">&nbsp;</a><font color=purple><b>1. CANVAS  INVENTORY SET UP:</b></font> 
 <br>
 <b>a.</b> If you do not already have a <b>GameObject &gt; UI &gt; Canvas</b> object in your Hierarchy, create one.<br>
-<ul> In Inspector, set <b>Canvas Scaler &gt; UI Scale Mode</b> from &quot;Constant Pixel Size&quot; to &quot;<b>Scale With Screen Size</b>&quot; and Reference Resolution to <b>1280 x 720.</b></ul>
-<b>b.</b> Add a <b>GameObject &gt; UI > Image.</b>
+<ul> In Inspector, set <b>Canvas Scaler &gt; UI Scale Mode</b> from &quot;Constant Pixel Size&quot; to &quot;<b>Scale With Screen Size</b>&quot; and Reference Resolution to <b>1280 x 720.</b>
+</ul>
+<b>b.</b> Add a <b>GameObject &gt; UI &gt; Button.</b>
+<ol>
+  <li> Name it &quot;<b>Button_Inventory</b>&quot;. Size it  50 x100). Position near Canvas bottom-right. </li>
+  <li> Open to select the Text. Size 50, bold, and set text field to &quot;&gt;&quot;</li>
+</ol>
+<b></b><b>c.</b> Add a <b>GameObject &gt; UI > Image.</b>
 <ol>
 <li> Name it &quot;<b>Inventory</b>&quot;. Size into a short, long rectangle  (try 900 x100). Position near Canvas bottom. 
 <li> In Inspector set Opacity to medium (try 150) and choose a color.
 </ol>
-<b>c. </b>RightClick Inventory to add another <b>UI > Image</b>.
+<b>d. </b>RightClick Inventory to add another <b>UI > Image</b>.
 <ul> Name it &quot;<b>InvItem</b>&quot;. 
 Size and position as an Item-slot in the Inventory (try 90 x 90).
 </ul>
-<b>d. </b>RightClick InvItem to add a third <b>UI > Image</b>.
+<b>e. </b>RightClick InvItem to add a third <b>UI > Image</b>.
 <ul> Name it &quot;<b>InvImage</b>&quot; (for the icon). 
 Size smaller  (try 80 x 80).
 </ul>
-<b>e. </b>RightClick InvItem to add a fourth <b>UI > Image</b>.
+<b>f. </b>RightClick InvItem to add a fourth <b>UI > Image</b>.
 <ol>
 <li> Name it &quot;<b>InvNum</b>&quot;.
 <li> Set image to default Knob. Size small  (try 40 x 40).
 <li> Position at lower right corner of InvItem (extend half outside).
 </ol>
-<b>f. </b>RightClick InvNum  to add a <b>GameObject &gt; UI > </b><strong>Text-TextMeshPro</strong> (to track the number of the item).
+<b>g. </b>RightClick InvNum  to add a <b>GameObject &gt; UI > </b><strong>Text-TextMeshPro</strong> (to track the number of the item).
 <ul> Size 30 x 30, bold. Set text field = &quot;?&quot;.
 </ul>
 
@@ -7193,6 +7199,7 @@ For clarity, this script is separate from the GameHandler script that manages ot
 <ol>
 <li> Create a new C# script named &quot;<b>GameInventory.cs</b>&quot;. 
 <li> Add the content below, save, and in Unity drag the script onto the GameHandler Prefab. 
+<li>Set the <strong>Button_Inventory OnClick()</strong>: drag the GameHandler into the None slot, and set the function to OpenCloseInventory(). 
 </ol>
 <br>
 
@@ -7384,11 +7391,7 @@ In  addition to the <b>InventoryDisplay() function</b>, we have:<br>
 &nbsp; &nbsp; &nbsp; An <b>InventoryAdd() function</b> to call by the PickUp_Inventory.cs script (see below)<br>
 &nbsp; &nbsp; &nbsp; An </font> <b><font face=arial>InventoryRemove()</font></b><font face=arial> function to call if an item is &quot;spent&quot; (by a button or a key press)<br>
 &nbsp; &nbsp; &nbsp; A <b>CoinChange()</b> function to add coins when found  or subtract coins for a purchase<br>
-Any action to spend an item or coins should check if their bool is true or amount sufficient for purchase.
-
-
-
-<br><br><br><br>
+Any action to spend an item or coins should check if their bool is true or amount sufficient for purchase.<br><br><br><br>
 <a href="#02a"><img src="gamedesign/triangle_purple.png" alt=""></a> 
 <a name="02a7">&nbsp;</a>
 <font color=purple><b>3. CRAFTING or COOKING using the GameInventory:</b></font>
@@ -8059,7 +8062,10 @@ When we enter a door/building from a map, we just need a command that updates bo
 	  <b>STEALTH GAME TOOLS:</b> <br />
 1. <a href="#02c_bush">Hide</a> in a bush
 (WIP)<br />
-      <br><br><br>
+2. Carry Camouflage (to come)
+<br>
+3. Make a dstracting noise (to come)
+<br>
 	</div>
 </div>
 
@@ -16909,10 +16915,28 @@ using in-scene Drag-and-Drop (added Sp 2023).
  <li> Drag this Prefab into a new Scene and hit <b>[Play]</b>.
 </ol> 
  
- <br>
- <br>
-<font face=arial><a href="#02i"><img src="gamedesign/triangle_purple.png" alt=""></a> <a name="02i2">&nbsp;</a></font><font size=+1><b>SIMPLE CANVAS NOTEPAD</b></font> <br>
-<em><b>SUMMARY:</b></em> Are you making an exploration game, and want the player to take notes along the way?
+<br> 
+<br><br><p>
+Clicking to Rotate: <strong>Pipes minigame "Clicker Puzzle"</strong>:
+<br>Download the <a href="gamedesign/Unity2D/PuzzleClickerGame.UnityPackage" target=Pipes>Unity Package</a>
+<p>
+  <strong>This package Includes 3 scripts: </strong>
+<ul>
+<li> A Master script to track moves and refresh the screen.
+<li> A puzzle script to manage rotation, color hanges, and to check if the piece is connected to the power source. 
+<li> A Connector script for the child colliders, to test for trigger-collision with each other.
+</ul>
+
+<strong>Play Instructions:</strong> Left or ight click to rotate tiles. Create a path that connects the triangles (yellow power source to the white output).
+
+
+<br><br>
+<br>
+<p>
+<a href="#02i"><img src="gamedesign/triangle_purple.png" alt=""></a> 
+<a name="02i2">&nbsp;</a>
+<font size=+1><b>SIMPLE CANVAS NOTEPAD</b></font> 
+<br><em><b>SUMMARY:</b></em> Are you making an exploration game, and want the player to take notes along the way?
 <br>
 Here is a simple system that lets the the player continuously add to a static string.
 
